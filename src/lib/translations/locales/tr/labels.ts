@@ -8,5 +8,12 @@ export default {
   rating: "Puan",
   add: "Sepete Ekle",
   shoppingCart: "Sepetiniz",
-  item: "Ürün"
+  item: "Ürün",
+  sum: "Toplam",
+  summary: "Özet",
+  productDetail: "Ürün Detayı",
+  quantity: "Miktar",
+  price: "Fiyat",
+  total: "Toplam",
+  continueShopping: "Alışverişe Devam Et"
 } as const;
