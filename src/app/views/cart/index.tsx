@@ -26,7 +26,7 @@ const Cart = () => {
               <h3 className="font-semibold text-center text-xs uppercase w-1/5">{t("lbl.total")}</h3>
             </div>
             {cart.cart.map(item => (
-              <div key={item.id} className="flex items-center hover:bg-gray-600 -mx-8 px-6 py-5">
+              <div key={item.id} className="flex items-center hover:bg-gray-100 dark:hover:bg-gray-700 -mx-8 px-6 py-5">
                 <div className="flex w-2/5">
                   <div className="w-20">
                     <img className="h-24" src={item.thumbnail} alt="" />
