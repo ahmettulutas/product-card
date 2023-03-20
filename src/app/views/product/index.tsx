@@ -13,6 +13,7 @@ const ProductDetailPage = () => {
   const products = useAppSelector(state => state.productsSlice.products?.data);
   const singleProduct = products?.products.find(item => item.id === Number(id));
   const dispatch = useAppDispatch();
+
   return (
     <Layout>
       <section className="body-font overflow-hidden">
