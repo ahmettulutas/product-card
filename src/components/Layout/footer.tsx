@@ -21,13 +21,13 @@ const Footer:React.FC = () => {
               <h3 className="font-bold">{t("lbl.social")}</h3>
               <ul className="list-reset items-center pt-3">
                 <li>
-                  <Link className="inline-block no-underline hover:text-black hover:underline py-1" to="#">Facebook</Link>
+                  <Link className="inline-block no-underline hover:text-black dark:hover:text-white hover:underline py-1" to="#">Facebook</Link>
                 </li>
                 <li>
-                  <Link className="inline-block no-underline hover:text-black hover:underline py-1" to="#">Twitter</Link>
+                  <Link className="inline-block no-underline hover:text-black dark:hover:text-white hover:underline py-1" to="#">Twitter</Link>
                 </li>
                 <li>
-                  <Link className="inline-block no-underline hover:text-black hover:underline py-1" to="#">Instagram</Link>
+                  <Link className="inline-block no-underline hover:text-black dark:hover:text-white hover:underline py-1" to="#">Instagram</Link>
                 </li>
               </ul>
             </div>

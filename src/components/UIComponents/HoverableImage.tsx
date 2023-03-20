@@ -5,7 +5,7 @@ type ImageProps = {
 }
 
 const HoverableImage: React.FC<ImageProps> = ({ url }) => {
-
+  const [loaded, setLoaded] = React.useState<boolean>(false);
   const imgRef = React.useRef<HTMLImageElement | null>(null);
   const handleHover = (event:React.MouseEvent<HTMLImageElement>) => {
     const { pageX, pageY } = event;
@@ -24,14 +24,17 @@ const HoverableImage: React.FC<ImageProps> = ({ url }) => {
       imgRef.current.style.transition = "transform 0.2s ease-in-out";
     }
   };
-
   return (
     <div className="overflow-hidden relative h-full">
+      {
+        !loaded && <div style={{ height: 380 }} className="flex animate-pulse flex-row items-center w-full bg-gray-300 justify-center space-x-5"></div>
+      }
       <img
         className="aspect-square object-cover h-auto w-full transition-all duration-900"
         ref={imgRef}
         onMouseMove={handleHover}
         onMouseLeave={handleMouseLeave}
+        onLoad={() => setLoaded(true)}
         src={url}/>
     </div>
   );
