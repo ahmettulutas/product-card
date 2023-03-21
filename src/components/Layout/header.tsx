@@ -6,12 +6,13 @@ import { useTranslation } from "react-i18next";
 import Purse from "~/assets/icons/purse.svg";
 import Cart from "~/assets/icons/cart.svg";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "~/utils/hooks";
 
 const Header:React.FC = () => {
 
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
-
+  const cart = useAppSelector(state => state.cart.cart);
   return (
     <header className="w-full z-30 top-0">
       <nav className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
@@ -38,7 +39,8 @@ const Header:React.FC = () => {
         </div>
 
         <div className="order-2 md:order-3 flex items-center" id="nav-content">
-          <Link className="pr-2 no-underline hover:text-black dark:hover:text-white hidden md:inline-block" to="/cart">
+          <Link className="pr-2 no-underline hover:text-black dark:hover:text-white hidden md:inline-block relative" to="/cart">
+            <span className="bg-yellow-500 text-sm rounded-xl p-1 py-0.5 left-4 absolute bottom-3 dark:bg-white dark:text-black">{cart.length}</span>
             <Cart className="fill-current"/>
           </Link>
           <ToggleLang />
