@@ -11,7 +11,7 @@ const ProductCard:React.FC<{product:Product}> = ({ product }) => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="w-full flex flex-col overflow-hidden dark:border-white">
+    <div className="w-full flex flex-col overflow-hidden dark:border-white shadow-md rounded-sm">
       <Link to={`/product/${product.id}`} >
         <HoverableImage url={product.thumbnail} />
       </Link>
@@ -19,7 +19,7 @@ const ProductCard:React.FC<{product:Product}> = ({ product }) => {
         <p>{product.title}</p>
         <HeartIcon onClick={() => dispatch(decreaseFromCart(product.id))} className="fill-current hover:text-yellow-500 h-6 w-6 cursor-pointer"/>
       </div>
-      <div className="pt-3 px-3 flex products-center justify-between">
+      <div className="mb-4 pt-3 px-3 flex products-center justify-between">
         <p>{`£${product.price}`}</p>
         <CartIcon onClick={() => dispatch(addToCart(product))} className="fill-current hover:text-yellow-500 h-6 w-6 cursor-pointer"/>
       </div>

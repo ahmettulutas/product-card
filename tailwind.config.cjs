@@ -11,6 +11,9 @@ module.exports = {
       xl: "1440px"
     },
     extend: {
+      gridTemplateRows: {
+        layout: "1fr auto"
+      }
     },
     container: {
       center: true,

@@ -14,7 +14,7 @@ const Header:React.FC = () => {
   const [open, setOpen] = useState(false);
   const cart = useAppSelector(state => state.cart.cart);
   return (
-    <header className="w-full z-30 top-0">
+    <header className="w-full z-30 top-0 fixed dark:bg-gray-900 bg-white">
       <nav className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
         <label className="cursor-pointer md:hidden block" onClick={() => setOpen(!open)}>
           <MenuButton className="fill-current text-gray-900 dark:text-yellow-500"/>
