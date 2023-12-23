@@ -11,8 +11,3 @@ export type Product = {
   thumbnail: string;
   images: string[];
 };
-export type Comment = {
-  id: number;
-  title: string;
-  description: string;
-};

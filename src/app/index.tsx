@@ -6,7 +6,7 @@ import NotFound from "./views/404";
 
 const Cart = React.lazy(() => import("./views/cart"));
 const Product = React.lazy(() => import("./views/product"));
-const Products = React.lazy(() => import("./views/products"));
+const Products = React.lazy(() => import("./views/product-list"));
 
 const App = () => {
   useEffect(() => {

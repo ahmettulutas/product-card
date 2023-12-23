@@ -2,7 +2,7 @@ import { RefObject, useEffect, useState } from "react";
 
 export const useIntersection = (
   ref: RefObject<Element>,
-  rootMargin = "0px",
+  rootMargin = "0px"
 ) => {
   const [isIntersecting, setIsIntersecting] = useState(true);
 
@@ -11,7 +11,7 @@ export const useIntersection = (
       ([entry]) => {
         setIsIntersecting(entry.isIntersecting);
       },
-      { rootMargin },
+      { rootMargin }
     );
     if (ref.current) observer.observe(ref.current);
 

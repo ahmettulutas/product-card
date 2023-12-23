@@ -9,6 +9,6 @@ export const selectFilteredProducts = (state: RootState) => {
   const searchTerm = selectSearchQuery(state);
   const allProducts = selectAllProducts(state);
   return allProducts?.products.filter((item: Product) =>
-    item.title.toLowerCase().includes(searchTerm.toLowerCase()),
+    item.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 };

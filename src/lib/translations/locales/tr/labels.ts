@@ -16,4 +16,5 @@ export default {
   price: "Fiyat",
   total: "Toplam",
   continueShopping: "Alışverişe Devam Et",
+  checkout: "Alışverişi Tamamla",
 } as const;

@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { personalLinks } from "~/lib/constants";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -23,28 +24,30 @@ const Footer: React.FC = () => {
               <h3 className="font-bold">{t("lbl.social")}</h3>
               <ul className="list-reset items-center pt-3">
                 <li>
-                  <Link
+                  <a
                     className="inline-block no-underline hover:text-black dark:hover:text-white hover:underline py-1"
-                    to="#"
+                    href={personalLinks.blog}
                   >
-                    Facebook
-                  </Link>
+                    Blog
+                  </a>
                 </li>
                 <li>
-                  <Link
+                  <a
+                    target="_blank"
                     className="inline-block no-underline hover:text-black dark:hover:text-white hover:underline py-1"
-                    to="#"
+                    href={personalLinks.github}
                   >
-                    Twitter
-                  </Link>
+                    Github
+                  </a>
                 </li>
                 <li>
-                  <Link
+                  <a
+                    target="_blank"
                     className="inline-block no-underline hover:text-black dark:hover:text-white hover:underline py-1"
-                    to="#"
+                    href={personalLinks.linkedin}
                   >
-                    Instagram
-                  </Link>
+                    Linkedin
+                  </a>
                 </li>
               </ul>
             </div>

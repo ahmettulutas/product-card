@@ -19,14 +19,14 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         <p>{product.title}</p>
         <HeartIcon
           onClick={() => dispatch(decreaseFromCart(product.id))}
-          className="fill-current hover:text-yellow-500 h-6 w-6 cursor-pointer"
+          className="hover:text-yellow-500 h-6 w-6 cursor-pointer"
         />
       </div>
       <div className="mb-4 pt-3 px-3 flex products-center justify-between">
         <p>{`£${product.price}`}</p>
         <CartIcon
           onClick={() => dispatch(addToCart(product))}
-          className="fill-current hover:text-yellow-500 h-6 w-6 cursor-pointer"
+          className="hover:text-yellow-500 h-6 w-6 cursor-pointer"
         />
       </div>
     </div>
