@@ -6,9 +6,10 @@ export const store = configureStore({
   reducer: {
     productsSlice: productsReducer,
     common: commonSlice,
-    cart: cartSlice
+    cart: cartSlice,
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false })
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
 });
 
 export type AppDispatch = typeof store.dispatch;

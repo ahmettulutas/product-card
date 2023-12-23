@@ -7,7 +7,6 @@ const useLanguage = () => {
       i18next.changeLanguage(langKey, () => {
         localStorage.setItem("lang", langKey);
       });
-
     };
   return { lang, toggleLang };
 };

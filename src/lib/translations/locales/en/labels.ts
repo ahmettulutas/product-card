@@ -15,5 +15,5 @@ export default {
   quantity: "Quantity",
   price: "Price",
   total: "Total",
-  continueShopping: "Continue Shopping"
+  continueShopping: "Continue Shopping",
 } as const;

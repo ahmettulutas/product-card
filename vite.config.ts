@@ -6,28 +6,26 @@ import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
   plugins: [
-    svgr(
-      {
-        exportAsDefault: true,
-        include: "**/*.svg"
-      }
-    ),
+    svgr({
+      exportAsDefault: true,
+      include: "**/*.svg",
+    }),
     react(),
     legacy({
-      targets: ["defaults"]
-    })
+      targets: ["defaults"],
+    }),
   ],
   resolve: {
     alias: {
-      "~": resolve(__dirname, "src")
-    }
+      "~": resolve(__dirname, "src"),
+    },
   },
   css: {
     preprocessorOptions: {
       less: {
         modifyVars: {},
-        javascriptEnabled: true
-      }
-    }
-  }
+        javascriptEnabled: true,
+      },
+    },
+  },
 });

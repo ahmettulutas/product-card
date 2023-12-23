@@ -2,13 +2,17 @@ import { CSSProperties, PropsWithChildren, useRef } from "react";
 import { useIntersection } from "~/utils/hooks";
 import { AnimateProps } from "./types";
 
-const AnimateIn: React.FC<PropsWithChildren<AnimateProps>> = ({ from, to, children, duration }) => {
-
+const AnimateIn: React.FC<PropsWithChildren<AnimateProps>> = ({
+  from,
+  to,
+  children,
+  duration,
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const onScreen = useIntersection(ref);
 
   const defaultStyles: CSSProperties = {
-    transition: `${duration ? duration : "600"}ms ease-in-out`
+    transition: `${duration ? duration : "600"}ms ease-in-out`,
   };
   return (
     <div
@@ -16,13 +20,13 @@ const AnimateIn: React.FC<PropsWithChildren<AnimateProps>> = ({ from, to, childr
       style={
         onScreen
           ? {
-            ...defaultStyles,
-            ...to
-          }
+              ...defaultStyles,
+              ...to,
+            }
           : {
-            ...defaultStyles,
-            ...from
-          }
+              ...defaultStyles,
+              ...from,
+            }
       }
     >
       {children}

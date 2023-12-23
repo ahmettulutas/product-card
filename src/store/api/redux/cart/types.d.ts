@@ -1,8 +1,8 @@
 import { Product } from "../products/types";
 export type CartProduct = Product & {
-  quantity: number
-}
+  quantity: number;
+};
 export type CartState = {
-  cart: CartProduct[],
-  total: number
-}
+  cart: CartProduct[];
+  total: number;
+};

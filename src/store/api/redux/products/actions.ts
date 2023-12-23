@@ -6,12 +6,20 @@ import { createAction } from "@reduxjs/toolkit";
 
 const productsThunks = {
   products: {
-    get: createRequestThunk<undefined, ResponseGenerator<"products", Product>>("get", "products", endpoints.products),
-    set: createAction<ResponseGenerator<"products", Product>>("products/set")
+    get: createRequestThunk<undefined, ResponseGenerator<"products", Product>>(
+      "get",
+      "products",
+      endpoints.products,
+    ),
+    set: createAction<ResponseGenerator<"products", Product>>("products/set"),
   },
   comments: {
-    get: createRequestThunk<undefined, ResponseGenerator<"comments", Comment>>("get", "comments", endpoints.categories)
-  }
+    get: createRequestThunk<undefined, ResponseGenerator<"comments", Comment>>(
+      "get",
+      "comments",
+      endpoints.categories,
+    ),
+  },
 };
 
 export { productsThunks };

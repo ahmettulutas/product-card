@@ -15,5 +15,5 @@ export default {
   quantity: "Miktar",
   price: "Fiyat",
   total: "Toplam",
-  continueShopping: "Alışverişe Devam Et"
+  continueShopping: "Alışverişe Devam Et",
 } as const;

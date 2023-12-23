@@ -2,7 +2,6 @@ import React from "react";
 import AnimateIn from "./AnimateIn";
 import { Props } from "./types";
 
-
 const FadeIn: React.FC<Props> = ({ children }) => (
   <AnimateIn from={{ opacity: 0 }} to={{ opacity: 1 }}>
     {children}
@@ -37,5 +36,5 @@ export const Animate = {
   FadeIn,
   FadeUp,
   ScaleIn,
-  SlideLeft
+  SlideLeft,
 };

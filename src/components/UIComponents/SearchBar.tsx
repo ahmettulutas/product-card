@@ -6,14 +6,13 @@ import { setSearchQuery } from "~/store/api/redux/common";
 import { useAppDispatch } from "~/utils/hooks";
 import { useDebounce } from "~/utils/hooks/";
 
-const SearchBar:React.FC = () => {
-
+const SearchBar: React.FC = () => {
   const [searchInput, setSearchInput] = useState<string>("");
   const debouncedValue = useDebounce(searchInput, 500);
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
   };
 
@@ -35,8 +34,9 @@ const SearchBar:React.FC = () => {
       />
       <button
         onClick={() => setSearchInput("")} // resets the searchQuery
-        className="hover:text-black dark:hover:text-white absolute inset-y-0 right-4 flex items-center pr-3 cursor-pointer">
-        <Cross className="w-6 h-6"/>
+        className="hover:text-black dark:hover:text-white absolute inset-y-0 right-4 flex items-center pr-3 cursor-pointer"
+      >
+        <Cross className="w-6 h-6" />
       </button>
     </div>
   );

@@ -1,27 +1,24 @@
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./index.html"
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
   theme: {
     screens: {
       sm: "480px",
       md: "768px",
       lg: "976px",
-      xl: "1440px"
+      xl: "1440px",
     },
     extend: {
       gridTemplateRows: {
-        layout: "1fr auto"
-      }
+        layout: "1fr auto",
+      },
     },
     container: {
       center: true,
       width: "90%",
       padding: {
-        DEFAULT: "1rem"
-      }
-    }
+        DEFAULT: "1rem",
+      },
+    },
   },
-  darkMode: "class"
+  darkMode: "class",
 };

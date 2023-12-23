@@ -1,13 +1,13 @@
 import * as React from "react";
 
 type ImageProps = {
-  url?: string,
-}
+  url?: string;
+};
 
 const HoverableImage: React.FC<ImageProps> = ({ url }) => {
   const [loaded, setLoaded] = React.useState<boolean>(false);
   const imgRef = React.useRef<HTMLImageElement | null>(null);
-  const handleHover = (event:React.MouseEvent<HTMLImageElement>) => {
+  const handleHover = (event: React.MouseEvent<HTMLImageElement>) => {
     const { pageX, pageY } = event;
     if (imgRef.current) {
       const { left, top } = imgRef.current.getBoundingClientRect();
@@ -26,16 +26,20 @@ const HoverableImage: React.FC<ImageProps> = ({ url }) => {
   };
   return (
     <div className="overflow-hidden relative h-full">
-      {
-        !loaded && <div style={{ height: 380 }} className="flex animate-pulse flex-row items-center w-full bg-gray-300 justify-center space-x-5"></div>
-      }
+      {!loaded && (
+        <div
+          style={{ height: 380 }}
+          className="flex animate-pulse flex-row items-center w-full bg-gray-300 justify-center space-x-5"
+        ></div>
+      )}
       <img
         className="aspect-square object-cover h-auto w-full transition-all duration-900"
         ref={imgRef}
         onMouseMove={handleHover}
         onMouseLeave={handleMouseLeave}
         onLoad={() => setLoaded(true)}
-        src={url}/>
+        src={url}
+      />
     </div>
   );
 };
