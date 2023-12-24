@@ -1,8 +1,9 @@
 import { useMemo } from "react";
 import Layout from "~/components/Layout";
-import { LoadingSpinner, ProductCard } from "~/components/UIComponents";
+import { ProductCard } from "~/components/UIComponents";
 import { Animate } from "~/components/UIComponents/Animation/AnimationFactory";
 import SearchBar from "~/components/UIComponents/SearchBar";
+import ProductsSkeleton from "~/components/UIComponents/Skeletons/product-list";
 import { useGetProductsQuery } from "~/store/api/api-service";
 import { Product } from "~/store/api/api-service/types";
 import { selectSearchQuery } from "~/store/api/redux/common/selectors";
@@ -29,7 +30,7 @@ const Products = () => {
   return (
     <Layout>
       {isLoading ? (
-        <LoadingSpinner />
+        <ProductsSkeleton />
       ) : (
         <section className="my-6">
           <SearchBar />

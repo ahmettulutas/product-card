@@ -24,12 +24,9 @@ const HoverableImage: React.FC<ImageProps> = ({ src }) => {
     }
   };
   return (
-    <div className="overflow-hidden relative h-full">
+    <div className="overflow-hidden relative">
       {!loaded && (
-        <div
-          style={{ height: 380 }}
-          className="flex animate-pulse flex-row items-center w-full bg-gray-300 justify-center space-x-5"
-        ></div>
+        <div className="absolute inset-0 animate-pulse flex-row items-center w-full h-auto bg-gray-200 dark:bg-gray-700"></div>
       )}
       <img
         className="aspect-square object-cover h-auto w-full"

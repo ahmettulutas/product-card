@@ -16,7 +16,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="w-full z-30 top-0 fixed dark:bg-gray-900 bg-white">
-      <nav className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-6 tracking-wide">
+      <nav className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-6">
         <label
           className="cursor-pointer md:hidden block"
           onClick={() => setOpen(!open)}
@@ -25,11 +25,11 @@ const Header: React.FC = () => {
         </label>
         {/* Mobile Menu */}
         <div
-          className="overflow-hidden grid transition-all duration-300 w-full shadow-lg md:hidden"
+          className="overflow-hidden grid transition-all duration-300 w-full md:hidden"
           style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
         >
           <ul
-            className={` transition-all duration-500 min-h-0 items-center justify-between text-base ${
+            className={`transition-all duration-500 min-h-0 items-center justify-between text-base ${
               open ? "p-4" : "p-0"
             }`}
           >
@@ -38,7 +38,7 @@ const Header: React.FC = () => {
                 className="inline-block no-underline hover:text-black dark:hover:text-white hover:underline py-2 pr-4"
                 to="/"
               >
-                {t("lbl.shop")}
+                <p>{t("lbl.shop")}</p>
               </Link>
             </li>
             <li>
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
                 className="inline-block no-underline hover:text-black dark:hover:text-white hover:underline py-2 pr-4"
                 to="#"
               >
-                {t("lbl.about")}
+                <p>{t("lbl.about")}</p>
               </Link>
             </li>
             <li>
@@ -88,7 +88,7 @@ const Header: React.FC = () => {
           </div>
           <li className="inline-flex gap-2 items-center justify-center font-semibold text-xl">
             <Purse />
-            <span>AHMTYOL</span>
+            <p>AHMTYOL</p>
           </li>
           <div className="flex gap-2">
             <li className="inline-flex items-center justify-center">
