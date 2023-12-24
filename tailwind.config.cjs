@@ -11,6 +11,15 @@ module.exports = {
       gridTemplateRows: {
         layout: "1fr auto",
       },
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-40deg)" },
+          "50%": { transform: "rotate(40deg)" },
+        },
+      },
+      animation: {
+        wiggle: "wiggle 0.2s ease-in-out infinite",
+      },
     },
     container: {
       center: true,

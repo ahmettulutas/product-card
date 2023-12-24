@@ -5,7 +5,7 @@ import { getProducts } from "~/store/api/redux/products/reducers";
 import NotFound from "./views/404";
 
 const Cart = React.lazy(() => import("./views/cart"));
-const Product = React.lazy(() => import("./views/product"));
+const Product = React.lazy(() => import("./views/product-detail"));
 const Products = React.lazy(() => import("./views/product-list"));
 
 const App = () => {

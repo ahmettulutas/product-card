@@ -18,5 +18,5 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         </RouterProvider>
       </I18nextProvider>
     </ReduxProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

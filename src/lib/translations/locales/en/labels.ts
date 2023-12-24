@@ -10,7 +10,7 @@ export default {
   shoppingCart: "Shopping Cart",
   item: "Item",
   sum: "Total",
-  summary: "Summary",
+  summary: "Shopping Summary",
   productDetail: "Product Detail",
   quantity: "Quantity",
   price: "Price",

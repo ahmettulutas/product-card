@@ -3,11 +3,7 @@ import { FaSun, FaMoon } from "react-icons/fa";
 import { toggleTheme } from "~/store/api/redux/common";
 import { useAppDispatch, useAppSelector } from "~/utils/hooks";
 
-type Props = {
-  defaultMode?: "light" | "dark";
-};
-
-const DarkModeToggle: React.FC<Props> = (/* { defaultMode = "light" } */) => {
+const DarkModeToggle = () => {
   const isDarkMode = useAppSelector((state) => state.common.isDarkTheme);
   const dispatch = useAppDispatch();
 

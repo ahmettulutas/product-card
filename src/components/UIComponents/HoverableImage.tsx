@@ -1,20 +1,19 @@
 import * as React from "react";
 
 type ImageProps = {
-  url?: string;
+  src: string;
 };
 
-const HoverableImage: React.FC<ImageProps> = ({ url }) => {
+const HoverableImage: React.FC<ImageProps> = ({ src }) => {
   const [loaded, setLoaded] = React.useState<boolean>(false);
   const imgRef = React.useRef<HTMLImageElement | null>(null);
-  const handleHover = (event: React.MouseEvent<HTMLImageElement>) => {
-    const { pageX, pageY } = event;
+
+  const handleHover = (e: React.MouseEvent<HTMLImageElement>) => {
     if (imgRef.current) {
-      const { left, top } = imgRef.current.getBoundingClientRect();
-      const x = pageX - left;
-      const y = pageY - top;
-      imgRef.current.style.transform = "scale(1.3)";
-      imgRef.current.style.transformOrigin = `${x}px ${y}px`;
+      const x = (100 * e.nativeEvent.offsetX) / e.currentTarget.offsetWidth;
+      const y = (100 * e.nativeEvent.offsetY) / e.currentTarget.offsetHeight;
+      imgRef.current.style.transform = "scale(1.4)";
+      imgRef.current.style.transformOrigin = `${x}% ${y}%`;
     }
   };
 
@@ -33,12 +32,12 @@ const HoverableImage: React.FC<ImageProps> = ({ url }) => {
         ></div>
       )}
       <img
-        className="aspect-square object-cover h-auto w-full transition-all duration-900"
+        className="aspect-square object-cover h-auto w-full"
         ref={imgRef}
         onMouseMove={handleHover}
         onMouseLeave={handleMouseLeave}
         onLoad={() => setLoaded(true)}
-        src={url}
+        src={src}
       />
     </div>
   );

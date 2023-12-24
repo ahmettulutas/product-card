@@ -13,7 +13,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   return (
     <div className="w-full flex flex-col overflow-hidden dark:border-white shadow-md rounded-sm">
       <Link to={`/product/${product.id}`}>
-        <HoverableImage url={product.thumbnail} />
+        {product.thumbnail && <HoverableImage src={product.thumbnail} />}
       </Link>
       <div className="pt-3 px-3 flex products-center justify-between">
         <p>{product.title}</p>

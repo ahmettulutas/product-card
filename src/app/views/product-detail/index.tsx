@@ -1,4 +1,3 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import Layout from "~/components/Layout";
@@ -10,10 +9,10 @@ const ProductDetailPage = () => {
   const { id } = useParams();
   const { t } = useTranslation();
   const products = useAppSelector(
-    (state) => state.productsSlice.products?.data,
+    (state) => state.productsSlice.products?.data
   );
   const singleProduct = products?.products.find(
-    (item) => item.id === Number(id),
+    (item) => item.id === Number(id)
   );
   const dispatch = useAppDispatch();
 
@@ -22,7 +21,10 @@ const ProductDetailPage = () => {
       <section className="body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
-            <HoverableImage url={singleProduct?.thumbnail} />
+            {singleProduct?.thumbnail && (
+              <HoverableImage src={singleProduct?.thumbnail} />
+            )}
+
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font tracking-widest uppercase">
                 {singleProduct?.brand}
@@ -88,7 +90,7 @@ const ProductDetailPage = () => {
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                   </svg>
                   <span className="text-gray-600 ml-3">{`${singleProduct?.rating} ${t(
-                    "lbl.rating",
+                    "lbl.rating"
                   )}`}</span>
                 </span>
               </div>

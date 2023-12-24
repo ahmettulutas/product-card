@@ -10,6 +10,7 @@ import {
 } from "~/store/api/redux/cart";
 import MinusIcon from "~/assets/icons/minus.svg";
 import PlusIcon from "~/assets/icons/plus.svg";
+import { HoverableImage } from "~/components/UIComponents";
 
 const Cart = () => {
   const { t } = useTranslation();
@@ -18,8 +19,8 @@ const Cart = () => {
   return (
     <Layout>
       <div className="container mx-auto mt-10">
-        <div className="flex shadow-md my-10 flex-wrap">
-          <div className="w-full lg:w-3/4 px-10 py-10">
+        <div className="flex my-10 flex-wrap">
+          <div className="w-full lg:w-3/4 py-10">
             <div className="flex justify-between border-b pb-8">
               <h1 className="font-semibold text-2xl">
                 {t("lbl.shoppingCart")}
@@ -28,57 +29,60 @@ const Cart = () => {
                 "lbl.item"
               )}`}</h2>
             </div>
-            <div className="flex mt-10 mb-5">
-              <h3 className="font-semibold text-xs uppercase w-2/5">
-                {t("lbl.productDetail")}
-              </h3>
-              <h3 className="font-semibold text-center text-xs uppercase w-1/5">
-                {t("lbl.quantity")}
-              </h3>
-              <h3 className="font-semibold text-center text-xs uppercase w-1/5">
-                {t("lbl.price")}
-              </h3>
-              <h3 className="font-semibold text-center text-xs uppercase w-1/5">
-                {t("lbl.total")}
-              </h3>
-            </div>
             {cart.cart.map((item) => (
               <div
                 key={item.id}
-                className="flex items-center hover:bg-gray-100 dark:hover:bg-gray-700 -mx-8 px-6 py-5"
+                className="grid grid-cols-1 gap-y-4 md:grid-cols-5 items-center hover:bg-gray-100 dark:hover:bg-gray-700 -mx-8 px-6 py-5"
               >
-                <div className="flex w-2/5">
-                  <div className="w-20">
-                    <img className="h-24" src={item.thumbnail} alt="" />
-                  </div>
-                  <div className="flex flex-col justify-between ml-4 flex-grow">
+                <div className="grid col-span-1">
+                  <h3 className="font-semibold text-xs mt-10 mb-5">
+                    {t("lbl.productDetail")}
+                  </h3>
+                  <HoverableImage src={item.thumbnail} />
+                  <div className="flex items-center gap-2 mt-2">
                     <span className="font-bold text-sm">{item.title}</span>
                     <span className="text-green-700 text-xs">{item.brand}</span>
+                  </div>
+                </div>
+                <section className="col-span-4 flex flex-col justify-center items-center gap-4">
+                  <div className="grid grid-cols-4 items-center w-[80%]">
+                    <p className="text-center font-semibold mb-6">
+                      {t("lbl.quantity")}
+                    </p>
+                    <p className="text-center font-semibold mb-6">
+                      {t("lbl.price")}
+                    </p>
+                    <p className="font-semibold text-center mb-6">
+                      {t("lbl.total")}
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-4 items-center w-[80%]">
+                    <div className="flex justify-center items-center">
+                      <MinusIcon
+                        className="cursor-pointer"
+                        onClick={() => dispatch(decreaseFromCart(item.id))}
+                      />
+                      <input
+                        className="mx-2 border text-center w-8"
+                        type="text"
+                        value={item.quantity}
+                        disabled
+                      />
+                      <PlusIcon
+                        onClick={() => dispatch(addToCart(item))}
+                        className="cursor-pointer"
+                      />
+                    </div>
+                    <span className="text-center font-semibold">{`$ ${item.price}`}</span>
+                    <span className="text-center font-semibold">
+                      {`$ ${item.price * item.quantity}`}
+                    </span>
                     <Delete
-                      className="w-4 font-semibold hover:text-red-500 text-xs cursor-pointer"
+                      className="w-4 h-4 font-semibold hover:text-red-500 text-xs cursor-pointer"
                       onClick={() => dispatch(removeFromCart(item.id))}
                     />
                   </div>
-                </div>
-                <div className="flex justify-center items-center w-1/5">
-                  <MinusIcon
-                    onClick={() => dispatch(decreaseFromCart(item.id))}
-                  />
-                  <input
-                    className="mx-2 border text-center w-8"
-                    type="text"
-                    value={item.quantity}
-                    disabled
-                  />
-                  <PlusIcon
-                    onClick={() => dispatch(addToCart(item))}
-                    className="pointer"
-                  />
-                </div>
-                <span className="text-center w-1/5 font-semibold text-sm">{`$ ${item.price}`}</span>
-                <span className="text-center w-1/5 font-semibold text-sm">{`$ ${
-                  item.price * item.quantity
-                }`}</span>
+                </section>
               </div>
             ))}
 
@@ -97,17 +101,17 @@ const Cart = () => {
           </div>
 
           <div id="summary" className="w-full lg:w-1/4 px-8 py-10">
-            <h1 className="font-semibold text-xl border-b pb-8">
+            <h1 className="font-semibold text-2xl border-b pb-8">
               {t("lbl.summary")}
             </h1>
             <div className="flex justify-between mt-10 mb-5">
-              <span className="font-semibold text-sm uppercase">{`${
-                cart.cart.length
-              } ${t("lbl.item")}`}</span>
+              <span className="font-semibold text-sm">{`${cart.cart.length} ${t(
+                "lbl.item"
+              )}`}</span>
               <span className="font-semibold text-sm">{`${cart.total} $`}</span>
             </div>
             <div className="border-t mt-8">
-              <div className="flex font-semibold justify-between py-6 text-sm uppercase">
+              <div className="flex font-semibold justify-between py-6 text-sm">
                 <span>{t("lbl.sum")}</span>
                 <span>{`${cart.total} $`}</span>
               </div>

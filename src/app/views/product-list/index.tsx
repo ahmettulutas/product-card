@@ -1,4 +1,3 @@
-import React from "react";
 import Layout from "~/components/Layout";
 import { LoadingSpinner, ProductCard } from "~/components/UIComponents";
 import { Animate } from "~/components/UIComponents/Animation/AnimationFactory";

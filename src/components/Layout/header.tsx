@@ -4,9 +4,10 @@ import MenuButton from "~/assets/icons/menu-button.svg";
 import ToggleLang from "../UIComponents/ToggleLang";
 import { useTranslation } from "react-i18next";
 import Purse from "~/assets/icons/purse.svg";
-import Cart from "~/assets/icons/cart.svg";
+
 import { Link } from "react-router-dom";
 import { useAppSelector } from "~/utils/hooks";
+import CartIcon from "../UIComponents/CartIcon";
 
 const Header: React.FC = () => {
   const { t } = useTranslation();
@@ -91,15 +92,7 @@ const Header: React.FC = () => {
           </li>
           <div className="flex gap-2">
             <li className="inline-flex items-center justify-center">
-              <Link
-                className="inline-flex items-center justify-center pr-2 no-underline hover:text-black dark:hover:text-white relative"
-                to="/cart"
-              >
-                <span className="bg-yellow-500 text-sm rounded-full p-1 py-0.5 left-4 absolute bottom-3 dark:bg-white dark:text-black w-6 h-6 text-center font-bold">
-                  {cart.length}
-                </span>
-                <Cart />
-              </Link>
+              <CartIcon count={cart.length} />
             </li>
             <li className="inline-flex items-center justify-center leading-6">
               <ToggleLang />

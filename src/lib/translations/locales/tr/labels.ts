@@ -10,7 +10,7 @@ export default {
   shoppingCart: "Sepetiniz",
   item: "Ürün",
   sum: "Toplam",
-  summary: "Özet",
+  summary: "Alışveriş Özeti",
   productDetail: "Ürün Detayı",
   quantity: "Miktar",
   price: "Fiyat",
