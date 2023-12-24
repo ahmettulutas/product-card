@@ -25,8 +25,8 @@ const CartIcon: React.FC<CartProps> = ({ count }) => {
         to="/cart"
       >
         <span
-          ref={countRef}
           className="bg-yellow-500 text-sm rounded-full left-2 absolute bottom-2 dark:bg-white dark:text-black flex items-center justify-center w-5 h-5 m-1 font-bold"
+          ref={countRef}
         >
           {count}
         </span>

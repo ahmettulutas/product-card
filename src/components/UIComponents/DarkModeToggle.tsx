@@ -1,4 +1,4 @@
-import React, { /*  useState, */ useEffect } from "react";
+import { useEffect } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { toggleTheme } from "~/store/api/redux/common";
 import { useAppDispatch, useAppSelector } from "~/utils/hooks";

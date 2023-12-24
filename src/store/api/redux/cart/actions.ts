@@ -1,6 +1,6 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { Product } from "../products/types";
 import { CartState } from "./types";
+import { Product } from "../../api-service/types";
 
 const actions = {
   addToCart: (state: CartState, action: PayloadAction<Product>) => {

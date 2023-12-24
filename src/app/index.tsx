@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { LoadingSpinner } from "~/components/UIComponents";
-import { getProducts } from "~/store/api/redux/products/reducers";
 import NotFound from "./views/404";
 
 const Cart = React.lazy(() => import("./views/cart"));
@@ -9,10 +8,6 @@ const Product = React.lazy(() => import("./views/product-detail"));
 const Products = React.lazy(() => import("./views/product-list"));
 
 const App = () => {
-  useEffect(() => {
-    getProducts();
-  }, []);
-
   return (
     <Routes>
       <Route

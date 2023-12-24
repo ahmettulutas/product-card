@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import HeartIcon from "~/assets/icons/heart.svg";
 import CartIcon from "~/assets/icons/cart.svg";
-import { Product } from "~/store/api/redux/products/types";
+
 import HoverableImage from "./HoverableImage";
 import { useAppDispatch } from "~/utils/hooks";
 import { addToCart, decreaseFromCart } from "~/store/api/redux/cart";
+import { Product } from "~/store/api/api-service/types";
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const dispatch = useAppDispatch();

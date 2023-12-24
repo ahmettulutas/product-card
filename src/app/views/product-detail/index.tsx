@@ -1,110 +1,48 @@
 import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Layout from "~/components/Layout";
-import { HoverableImage } from "~/components/UIComponents";
+import { HoverableImage, LoadingSpinner } from "~/components/UIComponents";
+import Rating from "~/components/UIComponents/Rating";
+import { useGetProductByIdQuery } from "~/store/api/api-service";
 import { addToCart } from "~/store/api/redux/cart";
-import { useAppDispatch, useAppSelector } from "~/utils/hooks";
+import { useAppDispatch } from "~/utils/hooks";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
   const { t } = useTranslation();
-  const products = useAppSelector(
-    (state) => state.productsSlice.products?.data
-  );
-  const singleProduct = products?.products.find(
-    (item) => item.id === Number(id)
-  );
+  const navigate = useNavigate();
+  const { data, isLoading, isSuccess, status, isError } =
+    useGetProductByIdQuery(id as string);
   const dispatch = useAppDispatch();
-
+  const failedToLoad = status === "rejected" || isError;
+  if (failedToLoad) navigate("/404");
   return (
     <Layout>
-      <section className="body-font overflow-hidden">
-        <div className="container px-5 py-24 mx-auto">
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <section className="px-5 py-24 mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
-            {singleProduct?.thumbnail && (
-              <HoverableImage src={singleProduct?.thumbnail} />
-            )}
-
+            {data?.thumbnail && <HoverableImage src={data?.thumbnail} />}
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font tracking-widest uppercase">
-                {singleProduct?.brand}
+                {data?.brand}
               </h2>
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                {singleProduct?.title}
+                {data?.title}
               </h1>
               <div className="flex mb-4">
-                <span className="flex items-center">
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 text-yellow-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 text-yellow-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 text-yellow-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 text-yellow-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 text-yellow-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <span className="text-gray-600 ml-3">{`${singleProduct?.rating} ${t(
-                    "lbl.rating"
-                  )}`}</span>
-                </span>
+                {data?.rating ? <Rating rating={data?.rating} /> : null}
               </div>
-              <p className="leading-relaxed">{singleProduct?.description}</p>
+              <p className="leading-relaxed">{data?.description}</p>
               <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5"></div>
               <div className="flex">
                 <span className="title-font font-medium text-2xl text-gray-900">
-                  ${singleProduct?.price}
+                  ${data?.price}
                 </span>
                 <button
                   className="flex ml-auto text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded"
-                  onClick={() =>
-                    singleProduct && dispatch(addToCart(singleProduct))
-                  }
+                  onClick={() => data && dispatch(addToCart(data))}
                 >
                   {t("lbl.add")}
                 </button>
@@ -123,8 +61,8 @@ const ProductDetailPage = () => {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </Layout>
   );
 };

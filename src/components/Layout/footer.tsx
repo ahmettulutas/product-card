@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
                     className="inline-block no-underline hover:text-black dark:hover:text-white hover:underline py-1"
                     href={personalLinks.blog}
                   >
-                    Blog
+                    {t("lbl.whoamI")}
                   </a>
                 </li>
                 <li>

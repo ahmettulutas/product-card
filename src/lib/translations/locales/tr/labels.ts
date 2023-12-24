@@ -17,4 +17,5 @@ export default {
   total: "Toplam",
   continueShopping: "Alışverişe Devam Et",
   checkout: "Alışverişi Tamamla",
+  whoamI: "Ben Kimim?",
 } as const;

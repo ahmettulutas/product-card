@@ -8,7 +8,7 @@ export default {
   rating: "Ratings",
   add: "Add to Cart",
   shoppingCart: "Shopping Cart",
-  item: "Item",
+  item: "Items",
   sum: "Total",
   summary: "Shopping Summary",
   productDetail: "Product Detail",
@@ -17,4 +17,5 @@ export default {
   total: "Total",
   continueShopping: "Continue Shopping",
   checkout: "Check Out",
+  whoamI: "Who am I?",
 } as const;
