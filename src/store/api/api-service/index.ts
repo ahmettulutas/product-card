@@ -10,10 +10,7 @@ export const productsApi = createApi({
   reducerPath: "pokemonApi",
   baseQuery: fetchBaseQuery({ baseUrl: endpoints.base }),
   endpoints: (builder) => ({
-    getProducts: builder.query<
-      ResponseGenerator<"products", Product>,
-      undefined
-    >({
+    getProducts: builder.query<ResponseGenerator<"products", Product>, void>({
       query: () => "/products",
     }),
     getProductById: builder.query<Product, string>({

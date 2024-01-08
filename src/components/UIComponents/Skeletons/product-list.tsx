@@ -7,7 +7,7 @@ const ProductsSkeleton = () => {
       {Array.from({ length: 12 }).map((item, key) => (
         <div
           key={key}
-          className="h-[410px] w-full bg-gray-50 dark:bg-gray-700"
+          className="h-[410px] w-full bg-gray-300 dark:bg-gray-700"
         ></div>
       ))}
       <span className="sr-only">Loading...</span>

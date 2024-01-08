@@ -19,7 +19,7 @@ export const selectFilteredProducts = (
 };
 
 const Products = () => {
-  const { data, isLoading, isError } = useGetProductsQuery(undefined);
+  const { data, isLoading, isError } = useGetProductsQuery();
   const searchTerm = useAppSelector(selectSearchQuery);
 
   const filteredProducts = useMemo(
@@ -29,11 +29,11 @@ const Products = () => {
 
   return (
     <Layout>
-      {isLoading ? (
-        <ProductsSkeleton />
-      ) : (
-        <section className="my-6">
-          <SearchBar />
+      <section className="my-6">
+        <SearchBar />
+        {isLoading ? (
+          <ProductsSkeleton />
+        ) : (
           <div className="container mx-auto grid gap-10 grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
             {filteredProducts?.map((product) => (
               <Animate.FadeIn key={product.id}>
@@ -41,8 +41,8 @@ const Products = () => {
               </Animate.FadeIn>
             ))}
           </div>
-        </section>
-      )}
+        )}
+      </section>
     </Layout>
   );
 };
